@@ -3,7 +3,7 @@
             [lab2-2 :as lazy]))
 
 (defn approx=
-  "Проверяет, что a и b равны с точностью eps. По умолчанию eps = 1e-4."
+  "Проверяет, что a и b равны с точностью eps."
   ([a b] (approx= a b 1e-2))
   ([a b eps] (<= (Math/abs (- a b)) eps)))
 

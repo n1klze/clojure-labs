@@ -24,8 +24,8 @@
   (let [number-of-blocks    4
         future-filter-time  (clock #(doall (future/pfilter slow-pred data number-of-blocks)))
         regular-filter-time (clock #(doall (filter slow-pred data)))]
-    (println "future-filter time:" future-filter-time "ms.")
-    (println "regular filter time:" regular-filter-time "ms.")
-    (println "amount of blocks:" number-of-blocks)
-    (println "future-filter is" (/ regular-filter-time future-filter-time) "times faster than regular filter")
+    (println "pfilter time:" future-filter-time "ms.")
+    (println "Default filter time:" regular-filter-time "ms.")
+    (println "Amount of blocks:" number-of-blocks)
+    (println "Speedup:" (/ regular-filter-time future-filter-time))
     (is (< future-filter-time regular-filter-time))))

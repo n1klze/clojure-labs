@@ -24,7 +24,7 @@
   (let [chunk-size          10
         lazy-filter-time    (clock #(doall (take 500 (pfilter-lazy slow-pred data chunk-size))))
         regular-filter-time (clock #(doall (take 500 (filter slow-pred data))))]
-    (println "lazy-filter time:" lazy-filter-time "ms.")
-    (println "regular filter time:" regular-filter-time "ms.")
-    (println "lazy-filter is" (/ regular-filter-time lazy-filter-time) "times faster than regular filter")
+    (println "pfilter-lazy time:" lazy-filter-time "ms.")
+    (println "Default filter time:" regular-filter-time "ms.")
+    (println "Speedup:" (/ regular-filter-time lazy-filter-time))
     (is (< lazy-filter-time regular-filter-time))))
